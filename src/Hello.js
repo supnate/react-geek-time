@@ -1,3 +1,8 @@
-import React from 'react';
+import React from "react";
 
-export default ({ name }) => <h1>Hello {name}!</h1>;
+export default () => (
+  <div>
+    <h1>Welcome to React course!</h1>
+    <p>Click the left side menu to navigate.</p>
+  </div>
+);

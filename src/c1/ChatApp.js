@@ -1,5 +1,6 @@
 import React from "react";
 import { render } from "react-dom";
+import withTimer from "../c6/withTimer";
 
 class MessageList extends React.PureComponent {
   render() {
@@ -7,7 +8,7 @@ class MessageList extends React.PureComponent {
   }
 }
 
-class ChatApp extends React.Component {
+export default class ChatApp extends React.Component {
   state = {
     messages: [],
     inputMsg: ""
@@ -39,8 +40,4 @@ class ChatApp extends React.Component {
       </div>
     );
   }
-}
-
-if (typeof window !== "undefined") {
-  render(<ChatApp />, document.getElementById("root"));
 }

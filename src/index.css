@@ -1,0 +1,35 @@
+.menu-list {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 150px;
+  list-style: none;
+  background-color: #eee;
+  padding: 0;
+  margin: 0;
+  padding-top: 30px;
+  overflow: auto;
+}
+
+.menu-list li {
+  padding: 5px 15px;
+}
+
+.link {
+  color: #2175bc;
+  cursor: pointer;
+}
+
+input {
+  padding: 7px;
+  outline: none;
+}
+button {
+  color: #fff;
+  background-color: #38f;
+  padding: 8px 15px;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}

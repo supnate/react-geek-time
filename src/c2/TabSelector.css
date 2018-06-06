@@ -1,0 +1,24 @@
+.tab-selector {
+  display: inline-block;
+}
+.tab-selector ul,
+.tab-selector li {
+  display: inline;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.tab-selector li {
+  display: inline-block;
+  padding: 5px 10px;
+  margin: 0 10px;
+  border: 1px solid #999;
+  cursor: default;
+}
+
+.tab-selector li.selected {
+  background-color: #777;
+  color: #fff;
+  border-color: #777;
+}
