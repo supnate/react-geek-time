@@ -9,7 +9,10 @@ export default class SnapshotSample extends PureComponent {
 
   handleNewMessage() {
     this.setState(prev => ({
-      messages: [`msg ${prev.messages.length}`, ...prev.messages]
+      messages: [
+        `msg ${prev.messages.length}`,
+        ...prev.messages
+      ]
     }));
   }
 
@@ -31,16 +34,24 @@ export default class SnapshotSample extends PureComponent {
     return this.rootNode.scrollHeight;
   }
 
-  componentDidUpdate(prevProps, prevState, prevScrollHeight) {
+  componentDidUpdate(
+    prevProps,
+    prevState,
+    prevScrollHeight
+  ) {
     const scrollTop = this.rootNode.scrollTop;
     if (scrollTop < 5) return;
     this.rootNode.scrollTop =
-      scrollTop + (this.rootNode.scrollHeight - prevScrollHeight);
+      scrollTop +
+      (this.rootNode.scrollHeight - prevScrollHeight);
   }
 
   render() {
     return (
-      <div className="snapshot-sample" ref={n => (this.rootNode = n)}>
+      <div
+        className="snapshot-sample"
+        ref={n => (this.rootNode = n)}
+      >
         {this.state.messages.map(msg => <div>{msg}</div>)}
       </div>
     );

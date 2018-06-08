@@ -3,7 +3,7 @@
   left: 0;
   top: 0;
   bottom: 0;
-  width: 150px;
+  width: 200px;
   list-style: none;
   background-color: #eee;
   padding: 0;
@@ -14,10 +14,16 @@
 
 .menu-list li {
   padding: 5px 15px;
+  color: #2175bc;
+}
+
+.menu-list li.is-active {
+  background-color: #2175bc;
+  color: #fff !important;
 }
 
 .link {
-  color: #2175bc;
+  display: block;
   cursor: pointer;
 }
 

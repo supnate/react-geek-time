@@ -4,7 +4,10 @@ import CommentForm from "./CommentForm";
 import "./CommentBox.css";
 
 const comments = [
-  { author: "Nate", content: "Hello React! This is a sample comment." },
+  {
+    author: "Nate",
+    content: "Hello React! This is a sample comment."
+  },
   { author: "Kevin", content: "Hello Redux!" },
   { author: "Bood", content: "Hello Rekit!" }
 ];

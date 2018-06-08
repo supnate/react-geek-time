@@ -7,24 +7,35 @@ import { TabSelectorSample } from "./c2/TabSelector";
 import { StatefulTabSelectSample } from "./c2/StatefulTabSelector";
 import Clock from "./c3/Clock";
 import SnapshotSample from "./c4/SnapshotSample";
+import DomDiff from "./c5/DomDiff";
 import { AdvancedTabSelectorSample } from "./c6/AdvancedTabSelector";
-import ContextAPI from "./ContextAPI";
+import LocaleSample from "./c7/LocaleSample";
+import PureRedux from "./c11/PureRedux";
+import Counter from "./c12/Counter";
+import AsyncAction from "./c13/AsyncAction";
+import ReduxMiddleware from "./c13/ReduxMiddleware";
+
 import "./index.css";
 
 const styles = {
   fontFamily: "sans-serif",
-  paddingLeft: "200px"
+  paddingLeft: "250px"
 };
 
 const routeMap = {
   chat: ChatApp,
-  "context-api": ContextAPI,
   "comment-box": CommentBox,
   "tab-selector": TabSelectorSample,
   "stateful-tab-selector": StatefulTabSelectSample,
   "snapshot-sample": SnapshotSample,
+  "dom-diff": DomDiff,
   "adv-tab-selector": AdvancedTabSelectorSample,
-  clock: Clock
+  "locale-sample": LocaleSample,
+  clock: Clock,
+  "pure-redux": PureRedux,
+  counter: Counter,
+  "async-action": AsyncAction,
+  "redux-middleware": ReduxMiddleware
 };
 
 class App extends React.PureComponent {
@@ -33,15 +44,30 @@ class App extends React.PureComponent {
     this.forceUpdate();
   };
   render() {
-    const currentPage = document.location.hash.replace("#", "");
+    const currentPage = document.location.hash.replace(
+      "#",
+      ""
+    );
 
     const CurrentPage = routeMap[currentPage] || Hello;
     return (
       <div style={styles}>
         <ul className="menu-list">
           {Object.keys(routeMap).map(key => (
-            <li key={key} style={{ listStyle: "none" }}>
-              <span className="link" onClick={() => this.handleLinkClick(key)}>
+            <li
+              key={key}
+              className={
+                key ===
+                document.location.hash.replace("#", "")
+                  ? "is-active"
+                  : ""
+              }
+              style={{ listStyle: "none" }}
+            >
+              <span
+                className="link"
+                onClick={() => this.handleLinkClick(key)}
+              >
                 {key}
               </span>
             </li>
