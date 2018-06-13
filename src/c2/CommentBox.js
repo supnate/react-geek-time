@@ -1,6 +1,7 @@
 import React from "react";
 import CommentList from "./CommentList";
 import CommentForm from "./CommentForm";
+import withTimer from "../c6/withTimer";
 import "./CommentBox.css";
 
 const comments = [
@@ -23,3 +24,5 @@ export class CommentBox extends React.PureComponent {
     );
   }
 }
+
+export default withTimer(CommentBox);
