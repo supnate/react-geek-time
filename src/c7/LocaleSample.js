@@ -55,5 +55,6 @@ export default () => (
         <LocaledButtons />
       </div>
     </LocaleProvider>
+    <LocaledButtons />
   </div>
 );

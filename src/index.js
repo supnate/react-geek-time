@@ -14,7 +14,7 @@ import PureRedux from "./c11/PureRedux";
 import Counter from "./c12/Counter";
 import AsyncAction from "./c13/AsyncAction";
 import ReduxMiddleware from "./c13/ReduxMiddleware";
-
+import OrgActions from "./c14/OrgActions";
 import "./index.css";
 
 const styles = {
@@ -35,7 +35,8 @@ const routeMap = {
   "pure-redux": PureRedux,
   counter: Counter,
   "async-action": AsyncAction,
-  "redux-middleware": ReduxMiddleware
+  "redux-middleware": ReduxMiddleware,
+  "org-actions": OrgActions
 };
 
 class App extends React.PureComponent {

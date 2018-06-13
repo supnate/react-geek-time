@@ -1,5 +1,9 @@
 import React from "react";
-import { createStore } from "redux";
+import {
+  createStore,
+  combineReducers,
+  bindActionCreators
+} from "redux";
 
 function run() {
   // Store initial state
@@ -22,8 +26,15 @@ function run() {
     return state;
   };
 
+  const todos = (state = {}) => state;
+
   // Create store
-  const store = createStore(counter);
+  const store = createStore(
+    combineReducers({
+      todos,
+      counter
+    })
+  );
 
   // Action creator
   function plusOne() {
@@ -39,8 +50,11 @@ function run() {
     return { type: "CUSTOM_COUNT", payload: { count } };
   }
 
+  plusOne = bindActionCreators(plusOne, store.dispatch);
+
   store.subscribe(() => console.log(store.getState()));
-  store.dispatch(plusOne());
+  // store.dispatch(plusOne());
+  plusOne();
   store.dispatch(minusOne());
   store.dispatch(customCount(5));
 }

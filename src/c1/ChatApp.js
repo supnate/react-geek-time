@@ -1,4 +1,5 @@
 import React from "react";
+import withTimer from "../c6/withTimer";
 
 class MessageList extends React.PureComponent {
   render() {
@@ -10,7 +11,7 @@ class MessageList extends React.PureComponent {
   }
 }
 
-export default class ChatApp extends React.Component {
+export class ChatApp extends React.Component {
   state = {
     messages: [],
     inputMsg: ""
@@ -36,13 +37,13 @@ export default class ChatApp extends React.Component {
       <div>
         <MessageList messages={this.state.messages} />
         <div>
-          <input
-            value={this.state.inputMsg}
-            onChange={this.handleInput}
-          />
+          <input value={this.state.inputMsg} />
           <button onClick={this.handleSend}>Send</button>
         </div>
+        <h2>{this.props.time.toLocaleString()}</h2>
       </div>
     );
   }
 }
+
+export default withTimer(ChatApp);

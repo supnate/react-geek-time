@@ -11,13 +11,14 @@ const comments = [
   { author: "Kevin", content: "Hello Redux!" },
   { author: "Bood", content: "Hello Rekit!" }
 ];
-export default class CommentBox extends React.PureComponent {
+export class CommentBox extends React.PureComponent {
   render() {
     return (
       <div className="comment-box">
         <h1>Comments ({comments.length})</h1>
         <CommentList comments={comments} />
         <CommentForm />
+        {this.props.time.getTime()}
       </div>
     );
   }
