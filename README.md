@@ -7,6 +7,8 @@
 # Demo 结构
 如下图，左侧为所有代码，按课程顺序进行 Demo 的组织。右侧为演示界面，菜单显示了所有可运行的 Demo 链接。点击菜单可以看到运行的结果。
 
+<img src="/react-geek-time/demo.png?raw=true" /> 
+
 # Demo 列表
 * 01 chat-app: 简单的 React 组件和交互演示
 * 02 comment-box：评论框界面的组件拆分和实现
