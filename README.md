@@ -4,6 +4,8 @@
 
 通过 codesandbox.io 您可以在线修改演示代码尝试运行结果，无需本地部署。
 
+[课程讲稿下载](https://github.com/supnate/react-geek-time/raw/master/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4-React%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E7%B2%BE%E9%80%9A.pdf)
+
 # Demo 结构
 如下图，左侧为所有代码，按课程顺序进行 Demo 的组织。右侧为演示界面，菜单显示了所有可运行的 Demo 链接。点击菜单可以看到运行的结果。
 
