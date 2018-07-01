@@ -15,6 +15,9 @@ import Counter from "./c12/Counter";
 import AsyncAction from "./c13/AsyncAction";
 import ReduxMiddleware from "./c13/ReduxMiddleware";
 import OrgActions from "./c14/OrgActions";
+import RouterSample from "./c16/RouterSample";
+import RouterParams from "./c17/RouterParams";
+import NestedRoute from "./c17/NestedRoute";
 import "./index.css";
 
 const styles = {
@@ -36,12 +39,16 @@ const routeMap = {
   counter: Counter,
   "async-action": AsyncAction,
   "redux-middleware": ReduxMiddleware,
-  "org-actions": OrgActions
+  "org-actions": OrgActions,
+  "router-sample": RouterSample,
+  "router-params": RouterParams,
+  "nested-route": NestedRoute
 };
 
 class App extends React.PureComponent {
   handleLinkClick = key => {
-    window.location.hash = `#${key}`;
+    // window.location.hash = `#${key}`;
+    window.history.pushState(null, "", `/#${key}`);
     this.forceUpdate();
   };
   render() {
