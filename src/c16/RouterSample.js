@@ -1,9 +1,10 @@
 import React from "react";
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Route,
   Link
 } from "react-router-dom";
+import { MemoryRouter } from "react-router";
 
 const Home = () => <h1>Home</h1>;
 const Hello = () => <h1>Hello</h1>;
@@ -12,7 +13,7 @@ const About = () => <h1>About Us</h1>;
 export default class RouterSample extends React.PureComponent {
   render() {
     return (
-      <Router>
+      <MemoryRouter>
         <div>
           <ul id="menu">
             <li>
@@ -32,7 +33,7 @@ export default class RouterSample extends React.PureComponent {
             <Route path="/about" component={About} />
           </div>
         </div>
-      </Router>
+      </MemoryRouter>
     );
   }
 }
