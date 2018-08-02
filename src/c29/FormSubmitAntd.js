@@ -4,7 +4,6 @@ import {
   DatePicker,
   Form,
   Input,
-  InputNumber,
   Select
 } from "antd";
 import FormBuilder from "./FormBuilder";
@@ -77,12 +76,6 @@ const formMeta = {
           message: "Please input valid email address."
         }
       ]
-    },
-    {
-      key: "age",
-      label: "Age",
-      initialValue: 10,
-      widget: InputNumber
     }
   ]
 };
