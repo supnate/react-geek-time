@@ -1,15 +1,15 @@
 import React from "react";
 import { render } from "react-dom";
 import Hello from "./Hello";
-import ChatApp from "./c1/ChatApp";
-import CommentBox from "./c2/CommentBox";
-import { TabSelectorSample } from "./c2/TabSelector";
-import { StatefulTabSelectSample } from "./c2/StatefulTabSelector";
-import Clock from "./c3/Clock";
-import SnapshotSample from "./c4/SnapshotSample";
-import DomDiff from "./c5/DomDiff";
-import { AdvancedTabSelectorSample } from "./c6/AdvancedTabSelector";
-import LocaleSample from "./c7/LocaleSample";
+import ChatApp from "./c01/ChatApp";
+import CommentBox from "./c02/CommentBox";
+import { TabSelectorSample } from "./c02/TabSelector";
+import { StatefulTabSelectSample } from "./c02/StatefulTabSelector";
+import Clock from "./c03/Clock";
+import SnapshotSample from "./c04/SnapshotSample";
+import DomDiff from "./c05/DomDiff";
+import { AdvancedTabSelectorSample } from "./c06/AdvancedTabSelector";
+import LocaleSample from "./c07/LocaleSample";
 import PureRedux from "./c11/PureRedux";
 import Counter from "./c12/Counter";
 import AsyncAction from "./c13/AsyncAction";
@@ -21,13 +21,19 @@ import NestedRoute from "./c17/NestedRoute";
 import FormSubmit from "./c29/FormSubmit";
 import FormSubmitAntd from "./c29/FormSubmitAntd";
 import DynamicForm from "./c30/DynamicForm";
+import ListSample from "./c31/App";
+import WizardSample from "./c35/App";
+import PortalSample from "./c37/PortalSample";
+import AntdDialog from "./c37/AntdDialog";
+import D3Sample from "./c38/D3Sample";
+import DndSample from "./c40/DndSample";
 import "antd/dist/antd.css";
 
 import "./index.css";
 
 const styles = {
   fontFamily: "sans-serif",
-  paddingLeft: "250px"
+  paddingLeft: "250px",
 };
 
 const routeMap = {
@@ -50,7 +56,13 @@ const routeMap = {
   "nested-route": NestedRoute,
   "form-submit": FormSubmit,
   "form-submit-antd": FormSubmitAntd,
-  "dynamic-form": DynamicForm
+  "dynamic-form": DynamicForm,
+  "list-page": ListSample,
+  "wizard-sample": WizardSample,
+  "portal-sample": PortalSample,
+  "antd-dialog": AntdDialog,
+  "d3-sample": D3Sample,
+  "dnd-sample": DndSample,
 };
 
 class App extends React.PureComponent {
@@ -60,12 +72,15 @@ class App extends React.PureComponent {
     this.forceUpdate();
   };
   render() {
-    const currentPage = document.location.hash.replace(
-      "#",
-      ""
-    );
+    const currentPage = document.location.hash.replace("#", "");
 
-    const CurrentPage = routeMap[currentPage] || Hello;
+    let CurrentPage = routeMap[currentPage] || Hello;
+    if (currentPage.match(/\/user\/\w+/)) {
+      CurrentPage = ListSample;
+    }
+    if (currentPage.match(/\/wizard\/step\/\w+/)) {
+      CurrentPage = WizardSample;
+    }
     return (
       <div style={styles}>
         <ul className="menu-list">
@@ -73,17 +88,13 @@ class App extends React.PureComponent {
             <li
               key={key}
               className={
-                key ===
-                document.location.hash.replace("#", "")
+                key === document.location.hash.replace("#", "")
                   ? "is-active"
                   : ""
               }
               style={{ listStyle: "none" }}
             >
-              <span
-                className="link"
-                onClick={() => this.handleLinkClick(key)}
-              >
+              <span className="link" onClick={() => this.handleLinkClick(key)}>
                 {key}
               </span>
             </li>
