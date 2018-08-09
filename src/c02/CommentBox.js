@@ -1,16 +1,16 @@
 import React from "react";
 import CommentList from "./CommentList";
 import CommentForm from "./CommentForm";
-import withTimer from "../c6/withTimer";
+import withTimer from "../c06/withTimer";
 import "./CommentBox.css";
 
 const comments = [
   {
     author: "Nate",
-    content: "Hello React! This is a sample comment."
+    content: "Hello React! This is a sample comment.",
   },
   { author: "Kevin", content: "Hello Redux!" },
-  { author: "Bood", content: "Hello Rekit!" }
+  { author: "Bood", content: "Hello Rekit!" },
 ];
 export class CommentBox extends React.PureComponent {
   render() {

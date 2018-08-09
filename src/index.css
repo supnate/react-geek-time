@@ -39,3 +39,13 @@ button {
   cursor: pointer;
   outline: none;
 }
+
+.wizard-finish-step li {
+  list-style: none;
+  padding: 10px;
+}
+.wizard-finish-step label {
+  font-weight: bold;
+  display: inline-block;
+  width: 100px;
+}

@@ -13,7 +13,7 @@ const About = () => <h1>About Us</h1>;
 export default class RouterSample extends React.PureComponent {
   render() {
     return (
-      <MemoryRouter>
+      <Router>
         <div>
           <ul id="menu">
             <li>
@@ -33,7 +33,7 @@ export default class RouterSample extends React.PureComponent {
             <Route path="/about" component={About} />
           </div>
         </div>
-      </MemoryRouter>
+      </Router>
     );
   }
 }
