@@ -1,0 +1,53 @@
+.app-layout-resize {
+  width: 500px;
+  height: 400px;
+  position: relative;
+  background-color: #eee;
+  text-align: center;
+  padding-left: 150px;
+  line-height: 60px;
+}
+
+.app-layout-resize .header {
+  border-bottom: 2px solid #fff;
+}
+.app-layout-resize .content {
+  position: absolute;
+  bottom: 60px;
+  top: 60px;
+  left: 0;
+  right: 0;
+}
+.app-layout-resize .sider {
+  width: 150px;
+  position: absolute;
+  border-right: 2px solid #fff;
+  top: 0;
+  left: 0;
+  bottom: 0;
+}
+.app-layout-resize .footer {
+  border-top: 2px solid #fff;
+  bottom: 0;
+  left: 150px;
+  right: 0;
+  position: absolute;
+}
+
+.app-layout-resize .sider-resizer {
+  position: absolute;
+  left: 148px;
+  width: 6px;
+  top: 0;
+  bottom: 0;
+  cursor: col-resize;
+}
+.app-layout-resize .resize-mask {
+  background: rgba(0, 0, 0, 0);
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  cursor: col-resize;
+}
