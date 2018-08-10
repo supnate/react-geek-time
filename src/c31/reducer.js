@@ -6,7 +6,7 @@ const initialState = {
   byId: {},
   fetchListPending: false,
   fetchListError: null,
-  listNeedReload: false
+  listNeedReload: false,
 };
 // reducer
 export default (state = initialState, action) => {
@@ -15,7 +15,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         fetchListPending: true,
-        fetchListError: null
+        fetchListError: null,
       };
     case "FETCH_LIST_SUCCESS": {
       const byId = {};
@@ -32,14 +32,14 @@ export default (state = initialState, action) => {
         pageSize: action.data.pageSize,
         total: action.data.total,
         fetchListPending: false,
-        fetchListError: null
+        fetchListError: null,
       };
     }
     case "FETCH_LIST_ERROR":
       return {
         ...state,
         fetchListPending: false,
-        fetchListError: action.data
+        fetchListError: action.data,
       };
       break;
     default:
