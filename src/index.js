@@ -30,6 +30,7 @@ import PortalSample from "./c37/PortalSample";
 import AntdDialog from "./c37/AntdDialog";
 import D3Sample from "./c38/D3Sample";
 import DndSample from "./c40/DndSample";
+import ReselectSample from "./c43/ReselectSample";
 import Suspense from "./c44/Suspense";
 import "antd/dist/antd.css";
 
@@ -70,20 +71,21 @@ const routeMap = {
   "antd-dialog": AntdDialog,
   "d3-sample": D3Sample,
   "dnd-sample": DndSample,
+  "reselect-sample": ReselectSample,
   suspense: Suspense,
 };
 
 class App extends React.PureComponent {
   handleLinkClick = key => {
     // window.location.hash = `#${key}`;
-    window.history.pushState(null, "", `/#${key}`);
+    window.history.pushState(null, "", `/#/${key}`);
     this.forceUpdate();
   };
   render() {
-    const currentPage = document.location.hash.replace("#", "");
+    const currentPage = document.location.hash.replace(/#\/?/, "");
 
     let CurrentPage = routeMap[currentPage] || Hello;
-    if (currentPage.match(/\/user\/\w+/)) {
+    if (currentPage.match(/\/user\/\w+|\/list-page/)) {
       CurrentPage = ListSample;
     }
     if (currentPage.match(/\/wizard\/step\/\w+/)) {
@@ -95,11 +97,7 @@ class App extends React.PureComponent {
           {Object.keys(routeMap).map(key => (
             <li
               key={key}
-              className={
-                key === document.location.hash.replace("#", "")
-                  ? "is-active"
-                  : ""
-              }
+              className={key === currentPage ? "is-active" : ""}
               style={{ listStyle: "none" }}
             >
               <span className="link" onClick={() => this.handleLinkClick(key)}>

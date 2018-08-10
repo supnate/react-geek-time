@@ -1,21 +1,17 @@
 import axios from "axios";
 
 // Action creator
-export function fetchList(
-  page = 1,
-  pageSize = 3,
-  keyword = ""
-) {
+export function fetchList(page = 1, keyword = "", pageSize = 3) {
   // action
   return dispatch => {
     // optionally you can have getState as the second argument
     dispatch({
-      type: "FETCH_LIST_BEGIN"
+      type: "FETCH_LIST_BEGIN",
     });
 
     const promise = new Promise((resolve, reject) => {
       const doRequest = axios.get(
-        `https://reqres.in/api/users?page=${page}&per_page=${pageSize}&q=${keyword}`
+        `https://reqres.in/api/users?page=${page}&per_page=${pageSize}&q=${keyword}`,
       );
 
       doRequest.then(
@@ -26,18 +22,18 @@ export function fetchList(
               items: res.data.data,
               page,
               pageSize,
-              total: res.data.total
-            }
+              total: res.data.total,
+            },
           });
           resolve(res);
         },
         err => {
           dispatch({
             type: "FETCH_LIST_ERROR",
-            data: { error: err }
+            data: { error: err },
           });
           reject(err);
-        }
+        },
       );
     });
 
@@ -50,29 +46,27 @@ export function fetchUser(id) {
   return dispatch => {
     // optionally you can have getState as the second argument
     dispatch({
-      type: "FETCH_USER_BEGIN"
+      type: "FETCH_USER_BEGIN",
     });
 
     const promise = new Promise((resolve, reject) => {
-      const doRequest = axios.get(
-        `https://reqres.in/api/users/${id}`
-      );
+      const doRequest = axios.get(`https://reqres.in/api/users/${id}`);
 
       doRequest.then(
         res => {
           dispatch({
             type: "FETCH_USER_SUCCESS",
-            data: res.data
+            data: res.data,
           });
           resolve(res);
         },
         err => {
           dispatch({
             type: "FETCH_USER_ERROR",
-            data: { error: err }
+            data: { error: err },
           });
           reject(err);
-        }
+        },
       );
     });
 

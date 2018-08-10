@@ -2,13 +2,27 @@ import React from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { Pagination, Table, Input } from "antd";
+import { withRouter } from "react-router";
 import { Link } from "react-router-dom";
 import { fetchList } from "./actions";
 
 class ListPage extends React.Component {
   state = { search: "" };
   componentDidMount() {
-    this.props.fetchList();
+    const page = this.props.match.params.page || 1;
+    this.fetchData(page);
+  }
+
+  componentDidUpdate(prevProps) {
+    const page = this.props.match.params.page || 1;
+    const prevPage = prevProps.match.params.page || 1;
+    if (prevPage !== page && !this.props.list.fetchListPending) {
+      this.fetchData(page);
+    }
+  }
+
+  fetchData(page) {
+    this.props.fetchList(page);
   }
 
   getDataSource() {
@@ -23,6 +37,9 @@ class ListPage extends React.Component {
         dataIndex: "first_name",
         key: "first_name",
         width: "200px",
+        render: (firstName, rec) => (
+          <Link to={`/user/${rec.id}`}>{firstName}</Link>
+        ),
       },
       {
         title: "Last Name",
@@ -37,7 +54,8 @@ class ListPage extends React.Component {
     this.props.fetchList(page, pageSize, keyword);
   };
   handlePageChange = newPage => {
-    this.props.fetchList(newPage);
+    this.props.history.push(`/list-page/${newPage}`);
+    // this.props.fetchList(newPage);
   };
   render() {
     if (!this.props.list.items) return "loading...";
@@ -68,7 +86,6 @@ class ListPage extends React.Component {
           total={total}
           pageSize={pageSize}
         />
-        <Link to="/user/1">User</Link>
       </div>
     );
   }
@@ -84,7 +101,9 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({ fetchList }, dispatch);
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(ListPage);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps,
+  )(ListPage),
+);
