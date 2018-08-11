@@ -42,6 +42,29 @@ export default (state = initialState, action) => {
         fetchListError: action.data,
       };
       break;
+    case "FETCH_USER_BEGIN":
+      return {
+        ...state,
+        fetchUserPending: true,
+        fetchUserError: null,
+      };
+    case "FETCH_USER_SUCCESS": {
+      return {
+        ...state,
+        byId: {
+          ...state.byId,
+          [action.data.id]: action.data,
+        },
+        fetchUserPending: false,
+      };
+    }
+    case "FETCH_USER_ERROR":
+      return {
+        ...state,
+        fetchUserPending: false,
+        fetchUserError: action.data,
+      };
+      break;
     default:
       break;
   }

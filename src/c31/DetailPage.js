@@ -7,7 +7,7 @@ import { fetchUser } from "./actions";
 
 class DetailPage extends React.Component {
   componentDidMount() {
-    if (!this.getUser()) this.props.fetchUser(this.props.match.params.userId);
+    this.props.fetchUser(this.props.match.params.userId);
   }
 
   getUser() {
@@ -19,7 +19,7 @@ class DetailPage extends React.Component {
   render() {
     const user = this.getUser();
 
-    if (!user) return "loading...";
+    if (!user || this.props.list.fetchUserPending) return "loading...";
     const { first_name, last_name } = user;
     return (
       <div className="detail-page">

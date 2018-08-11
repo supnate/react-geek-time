@@ -8,7 +8,7 @@ import Step3 from "./Step3";
 
 class App extends React.Component {
   state = {
-    allValues: {}
+    allValues: {},
   };
 
   pushUrl(path) {
@@ -17,19 +17,18 @@ class App extends React.Component {
   }
 
   handleNext = () => {
-    console.log("form values: ", this.props.form.getFieldsValue());
     this.setState({
       allValues: {
         ...this.state.allValues,
-        ...this.props.form.getFieldsValue()
-      }
+        ...this.props.form.getFieldsValue(),
+      },
     });
     const currentStep = this.getCurrentStep();
     if (currentStep < this.getSteps().length - 1) {
       this.pushUrl(this.getSteps()[currentStep + 1].path);
     } else {
       Modal.success({
-        title: "提交成功"
+        title: "提交成功",
       });
     }
   };
@@ -38,8 +37,8 @@ class App extends React.Component {
     this.setState({
       allValues: {
         ...this.state.allValues,
-        ...this.props.form.getFieldsValue()
-      }
+        ...this.props.form.getFieldsValue(),
+      },
     });
     const currentStep = this.getCurrentStep();
     if (currentStep > 0) {
@@ -56,7 +55,7 @@ class App extends React.Component {
     return [
       { title: "验证邮件", path: "/wizard/step/1", component: Step1 },
       { title: "账号信息", path: "/wizard/step/2", component: Step2 },
-      { title: "完成", path: "/wizard/step/3", component: Step3 }
+      { title: "完成", path: "/wizard/step/3", component: Step3 },
     ];
   }
   renderComponent = () => {

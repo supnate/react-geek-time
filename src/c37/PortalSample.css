@@ -4,8 +4,9 @@
   width: 500px;
   height: 300px;
   left: 50%;
-  top: 30%;
+  top: 50%;
   transform: translate(-50%, -50%);
+  background-color: #fff;
   border-radius: 10px;
   border: 1px solid #ddd;
   box-shadow: 0px 0px 20px 2px #ddd;

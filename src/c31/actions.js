@@ -56,7 +56,7 @@ export function fetchUser(id) {
         res => {
           dispatch({
             type: "FETCH_USER_SUCCESS",
-            data: res.data,
+            data: res.data.data,
           });
           resolve(res);
         },

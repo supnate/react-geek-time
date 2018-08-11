@@ -5,17 +5,32 @@ import { Pagination, Table, Input } from "antd";
 import { withRouter } from "react-router";
 import { Link } from "react-router-dom";
 import { fetchList } from "./actions";
+import { createSelector } from "reselect";
+
+const getItems = state => state.items;
+const getById = state => state.byId;
+
+const dataSourceSelector = createSelector(getItems, getById, (items, byId) => {
+  console.log("reselect: get data source");
+  if (!items) return [];
+  return items.map(id => byId[id]);
+});
 
 class ListPage extends React.Component {
   state = { search: "" };
   componentDidMount() {
     const page = this.props.match.params.page || 1;
-    this.fetchData(page);
+    if (
+      page !== this.props.list.page ||
+      !this.getDataSource().length ||
+      this.props.list.needReloadList
+    )
+      this.fetchData(parseInt(page, 10));
   }
 
   componentDidUpdate(prevProps) {
-    const page = this.props.match.params.page || 1;
-    const prevPage = prevProps.match.params.page || 1;
+    const page = parseInt(this.props.match.params.page || 1, 10);
+    const prevPage = parseInt(prevProps.match.params.page || 1, 10);
     if (prevPage !== page && !this.props.list.fetchListPending) {
       this.fetchData(page);
     }
@@ -25,11 +40,14 @@ class ListPage extends React.Component {
     this.props.fetchList(page);
   }
 
-  getDataSource() {
-    const { items, byId } = this.props.list;
-    if (!items) return [];
-    return items.map(id => byId[id]);
-  }
+  getDataSource = dataSourceSelector;
+
+  // getDataSource:() {
+  //   console.log("get data source");
+  //   const { items, byId } = this.props.list;
+  //   if (!items) return [];
+  //   return items.map(id => byId[id]);
+  // }
   getColumns() {
     return [
       {
@@ -58,7 +76,12 @@ class ListPage extends React.Component {
     // this.props.fetchList(newPage);
   };
   render() {
-    if (!this.props.list.items) return "loading...";
+    console.log("rrender");
+    if (this.props.list.fetchListError) {
+      return <div>{this.props.list.fetchListError.error.message}</div>;
+    }
+    if (!this.props.list.items || !this.props.list.items.length)
+      return "loading...";
     const { page, total, pageSize, keyword } = this.props.list;
     return (
       <div>
@@ -72,7 +95,7 @@ class ListPage extends React.Component {
         <br />
         <br />
         <Table
-          dataSource={this.getDataSource()}
+          dataSource={this.getDataSource(this.props.list)}
           columns={this.getColumns()}
           style={{ width: "400px" }}
           rowKey="id"
