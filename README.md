@@ -1,4 +1,5 @@
 # 极客时间：React 从入门到精通
+### 所有课程已经更新完毕，感谢大家支持！🎉🎉🎉
 
 本 Repo 包含了所有课程的演示代码，代码由 codesandbox.io 同步到本 Repo：https://codesandbox.io/s/6n20nrzlxz
 
@@ -23,6 +24,24 @@
 * 12 counter：在 React 中使用 Redux
 * 13 async-action：Redux 异步 action，中间件的概念
 * 14 org-action：如何组织 Redux 的 action 和 reducer
+* 16 router-sample：路由不只是页面切换，更是代码组织方式
+* 17.1 router-params：路由参数定义
+* 17.2 nexted-route：嵌套路由
+* 29.1 form-submit： 表单提交
+* 29.2 form-submit-antd：使用 antd 的表单组件
+* 30 dynamic-form：动态表单
+* 31 list-page：列表页的翻页，搜索和缓存
+* 33 multiple-request：页面多个请求的处理
+* 35 wizard-sample：基于路由实现向导页面
+* 36.1 layout1：常用布局的实现
+* 36.2 layout2: 常用布局的实现
+* 36.3 layout-resize：实现侧边栏可调整宽度
+* 37.1 portal-example：使用 React Portals 实现的对话框
+* 37.2 antd-dialog：使用 antd 实现对话框
+* 40 dnd-sample：在 React 中实现拖放功能
+* 43 reselect-sample：使用 reselect 避免重复计算
+* 44 suspense：React 的异步渲染
+
 
 # License
 MIT
